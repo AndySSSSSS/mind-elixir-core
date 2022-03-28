@@ -32,7 +32,7 @@ export default function(mind) {
   let bgOrFont
   const styleDiv = createDiv('nm-style')
   const tagDiv = createDiv('nm-tag')
-  const iconDiv = createDiv('nm-icon')
+  // const iconDiv = createDiv('nm-icon')
 
   styleDiv.innerHTML = `
       <div class="nm-fontsize-container">
@@ -60,7 +60,7 @@ export default function(mind) {
       </div>
   `
   tagDiv.innerHTML = `${i18n[locale].tag}<input class="nm-tag" tabindex="-1" placeholder="${i18n[locale].tagsSeparate}" /><br>`
-  iconDiv.innerHTML = `${i18n[locale].icon}<input class="nm-icon" tabindex="-1" placeholder="${i18n[locale].iconsSeparate}" /><br>`
+  // iconDiv.innerHTML = `${i18n[locale].icon}<input class="nm-icon" tabindex="-1" placeholder="${i18n[locale].iconsSeparate}" /><br>`
 
   const menuContainer = document.createElement('nmenu')
   menuContainer.innerHTML = `
@@ -70,7 +70,7 @@ export default function(mind) {
   `
   menuContainer.appendChild(styleDiv)
   menuContainer.appendChild(tagDiv)
-  menuContainer.appendChild(iconDiv)
+  // menuContainer.appendChild(iconDiv)
   menuContainer.hidden = true
 
   function clearSelect(klass, remove) {
@@ -86,7 +86,7 @@ export default function(mind) {
   const buttonContainer:HTMLElement = menuContainer.querySelector('.button-container')
   const fontBtn:HTMLElement = menuContainer.querySelector('.font')
   const tagInput:HTMLInputElement = mind.container.querySelector('.nm-tag')
-  const iconInput:HTMLInputElement = mind.container.querySelector('.nm-icon')
+  // const iconInput:HTMLInputElement = mind.container.querySelector('.nm-icon')
   menuContainer.onclick = e => {
     if (!mind.currentNode) return
     const nodeObj = mind.currentNode.nodeObj
@@ -154,13 +154,13 @@ export default function(mind) {
       mind.updateNodeTags(mind.currentNode.nodeObj, newTags)
     }
   }
-  iconInput.onchange = (e:InputEvent & { target: HTMLInputElement}) => {
-    if (!mind.currentNode) return
-    if (e.target.value) {
-      const newIcons = e.target.value.split(',')
-      mind.updateNodeIcons(mind.currentNode.nodeObj, newIcons)
-    }
-  }
+  // iconInput.onchange = (e:InputEvent & { target: HTMLInputElement}) => {
+  //   if (!mind.currentNode) return
+  //   if (e.target.value) {
+  //     const newIcons = e.target.value.split(',')
+  //     mind.updateNodeIcons(mind.currentNode.nodeObj, newIcons)
+  //   }
+  // }
   let state = 'open'
   buttonContainer.onclick = e => {
     if (state === 'open') {
@@ -202,10 +202,10 @@ export default function(mind) {
     } else {
       tagInput.value = ''
     }
-    if (nodeObj.icons) {
-      iconInput.value = nodeObj.icons.join(',')
-    } else {
-      iconInput.value = ''
-    }
+    // if (nodeObj.icons) {
+    //   iconInput.value = nodeObj.icons.join(',')
+    // } else {
+    //   iconInput.value = ''
+    // }
   })
 }
